@@ -1,4 +1,4 @@
-package HomeTask_08;
+package ua.hillel.HomeTask_08;
 
 public class ColorForText {
     public static final String ANSI_RESET = "\u001B[0m";

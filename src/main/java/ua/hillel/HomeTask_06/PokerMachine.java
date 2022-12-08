@@ -1,4 +1,4 @@
-package HomeTask_06;
+package ua.hillel.HomeTask_06;
 
 import java.util.Random;
 
