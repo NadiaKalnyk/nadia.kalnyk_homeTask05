@@ -1,4 +1,4 @@
-package Phone;
+package ua.hillel.Phone;
 
 public interface InterfaceListening {
     void listenToPodcast();

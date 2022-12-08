@@ -1,4 +1,4 @@
-package Phone;
+package ua.hillel.Phone;
 
 public abstract class Phone {
     public void makeCall (String number) { //метод з реалізацією: я здійснюю дзвінок

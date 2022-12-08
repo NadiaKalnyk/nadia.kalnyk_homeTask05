@@ -1,4 +1,4 @@
-package Phone;
+package ua.hillel.Phone;
 
 public class PhoneExample {
     public static void main(String[] args) {
