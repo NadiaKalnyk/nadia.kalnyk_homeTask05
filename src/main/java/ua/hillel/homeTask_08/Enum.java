@@ -1,4 +1,4 @@
-package HomeTask_08;
+package ua.hillel.homeTask_08;
 
 public enum Enum {
     INFO ("Information: intended to promote understanding, encourage action, stimulate thinking, or promote ideas"),
@@ -11,7 +11,7 @@ public enum Enum {
 
     Enum(String message) {
         this.message = message;
-    }
+    } // конструктор?
 
     public String getMessage() {
         return message;

@@ -1,4 +1,5 @@
-package HomeTask_08;
+package ua.hillel.homeTask_08;
+
 
 public class MainClass {
     public static void main(String[] args) {
@@ -6,6 +7,5 @@ public class MainClass {
         Logger.debug(Enum.DEBUG.getMessage());
         Logger.warn(Enum.WARN.getMessage());
         Logger.error(Enum.ERROR.getMessage());
-
     }
 }

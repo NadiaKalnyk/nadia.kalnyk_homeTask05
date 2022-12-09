@@ -1,4 +1,4 @@
-package HomeTask_06;
+package ua.hillel.homeTask_06;
 
 public class Deck {
 

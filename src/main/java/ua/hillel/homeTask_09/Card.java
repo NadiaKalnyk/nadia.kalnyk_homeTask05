@@ -1,4 +1,4 @@
-package HomeTask_06;
+package ua.hillel.homeTask_09;
 
 public class Card {
     private String value;
