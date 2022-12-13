@@ -18,11 +18,9 @@ public class Purchase {
         map.put ("mango", 1);
         System.out.println("List of the products - " + map);
 
-        for (int i = 0; i < 1; i++) {
-            int countsOfProducts = 0;
-            countsOfProducts = map.get("apples") + map.get("bananas") + map.get("grapes") + map.get("oranges") + map.get("mango");
-            System.out.println("Your count of product is " + countsOfProducts);
-        }
+        int countsOfProducts = 0;
+        countsOfProducts = map.get("apples") + map.get("bananas") + map.get("grapes") + map.get("oranges") + map.get("mango");
+        System.out.println("Your count of product is " + countsOfProducts);
     }
 }
 
