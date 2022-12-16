@@ -4,8 +4,7 @@ package ua.hillel.homeTask_10;
 Список заповнити випадковими товарами. В кінці потрібно підрахувати загальну кількість всіх доданих товарів*/
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Purchase {
     public static void main(String[] args) {
@@ -16,10 +15,12 @@ public class Purchase {
         map.put ("grapes", 3);
         map.put ("oranges", 4);
         map.put ("mango", 1);
-        System.out.println("List of the products - " + map);
 
         int countsOfProducts = 0;
-        countsOfProducts = map.get("apples") + map.get("bananas") + map.get("grapes") + map.get("oranges") + map.get("mango");
+        for (int value:  map.values()) {
+            countsOfProducts += value;
+        }
+        System.out.println("List of the products - " + map);
         System.out.println("Your count of product is " + countsOfProducts);
     }
 }

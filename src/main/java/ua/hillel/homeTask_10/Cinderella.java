@@ -10,36 +10,36 @@ import java.util.Random;
 
 public class Cinderella {
     public static void main(String[] args) {
+        final int collectionSize = 100;
+        final int randomRangeLimit = 100;
+
         List<Integer> list = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            list.add(random.nextInt(100));
+        for (int i = 0; i < collectionSize; i++) {
+            list.add(random.nextInt(randomRangeLimit));
         }
         System.out.println("Random number collection " + list);
 
-        List<Integer> divIntoTwo = new ArrayList<Integer>();
-        List<Integer> divIntoThree = new ArrayList<Integer>();
-        List<Integer> other = new ArrayList<Integer>();
+        List<Integer> divIntoTwo = new ArrayList<>();
+        List<Integer> divIntoThree = new ArrayList<>();
+        List<Integer> other = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Integer number = list.get(i);
 
             if (number % 2 == 0) {
                 divIntoTwo.add(number);
-/*                System.out.println("1 (DivIntoTwo) "+ number.toString());*/
-            } if (number % 3 == 0) {
-                    divIntoThree.add(number);
-/*                    System.out.println("2 (DivIntoThree) " + number.toString());*/
+            }
+            if (number % 3 == 0) {
+                divIntoThree.add(number);
             } else {
-                if ((number % 2 !=0) && (number % 3 !=0)) {
+                if  (number % 2 !=0) {
                     other.add(number);
-                    /*                System.out.println("3 (Other) " + number.toString());*/
                 }
             }
         }
         System.out.println("1 basket " + divIntoTwo + " - this numbers are divided into 2");
         System.out.println("2 basket " + divIntoThree + " - this numbers are divided into 3");
         System.out.println("3 basked " + other + " - this numbers aren't divided into 2 or 3");
-
     }
 }
 

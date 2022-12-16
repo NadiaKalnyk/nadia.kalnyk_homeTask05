@@ -11,15 +11,18 @@ import java.util.stream.Collectors;
 
 public class RemoveDuplicates {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(50);
+        final int collectionSize = 100;
+        final int randomRangeLimit = 50;
+
+        List<Integer> list = new ArrayList<>(collectionSize);
         Random random = new Random();
         List distinctList = null;
         int count = 0;
-        for (int i = 0; i < 50; i++) {
-            list.add(random.nextInt(100));
-            distinctList = list.stream().distinct().collect(Collectors.toList()); // видалення дублікатів з колекції
-            count = list.size() - distinctList.size();
+        for (int i = 0; i < collectionSize; i++) {
+            list.add(random.nextInt(randomRangeLimit));
         }
+        distinctList = list.stream().distinct().collect(Collectors.toList()); // видалення дублікатів з колекції
+        count = list.size() - distinctList.size();
         System.out.println("Collection without duplicates: " + distinctList);
         System.out.println("Full random collection: " + list);
         System.out.println("Count of deleted duplicates: " + count);
