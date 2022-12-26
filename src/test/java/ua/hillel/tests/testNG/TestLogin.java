@@ -14,7 +14,7 @@ public class TestLogin {
         };
     }
 
-    @Test(dataProvider = "userData", priority = 10)
+    @Test(dataProvider = "userData", groups = "login")
     public void loginTest (String username, String password, String role){
         System.out.println("User " + username +" has role - " + role);
     }
