@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Test 1" >
+        <classes>
+            <class name="ua.hillel.tests.testNG.TestLogin" />
+        </classes>
+    </test>
+
+    <test name="Test 2">
+        <classes>
+            <class name="ua.hillel.tests.testNG.FailedLogin"/>
+        </classes>
+    </test>
+    <test name="Test 3" >
+        <parameter name="userValue=" value="UserTest1"/>
+        <parameter name = "passwordValue=" value = "Qwerty123"/>
+        <parameter name = "roleValue=" value = "admin"/>
+        <classes>
+            <class name="ua.hillel.tests.testNG.ParametersTest" />
+        </classes>
+    </test>
+</suite>
