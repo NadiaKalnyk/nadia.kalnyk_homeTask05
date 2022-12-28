@@ -8,15 +8,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import static org.openqa.selenium.By.cssSelector;
 
 public class Login {
-    @Test(groups = "login")
+    WebDriver driver = new ChromeDriver();
+    @Test
     public void validLogin() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/login");
 
         driver.findElement(By.xpath("//label[text()='Username']/../input")).click();
@@ -26,12 +28,16 @@ public class Login {
 
         driver.findElement(cssSelector(".fa")).click();
 
+        String actualResult = driver.findElement(By.cssSelector(".success")).getText();
+        String expectedResult = "You logged into a secure area!";
 
-        driver.findElement(cssSelector(".success")).getText().compareTo("You logged into a secure area!");
+
+        Assert.assertEquals(expectedResult, actualResult);
+
         driver.quit();
     }
 
-    @Test(dependsOnGroups = "login")
+    @Test
     public void invalidLogin() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -44,7 +50,12 @@ public class Login {
 
         driver.findElement(cssSelector(".fa")).click();
 
-        driver.findElement(cssSelector(".error")).getText().compareTo("Your username is invalid!");
+        Assert.assertEquals(driver.findElement(By.cssSelector(".error")).getText(), "Your username is invalid!");
+
+        driver.quit();
+    }
+    @AfterTest
+    public void closeBrowser() {
         driver.quit();
     }
 }
