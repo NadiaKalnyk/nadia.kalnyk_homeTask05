@@ -25,14 +25,16 @@ public class DisplayUsernames {
     }
     @Test
     public void displayUsernames() {
-        List<Integer> list = new ArrayList<>();
 
         int count = driver.findElements(By.xpath("//*[@class ='example']/div/img[1]")).size();
+        Actions actions = new Actions(driver);
         for (int i=1; i<=count; i++) {
-            Actions actions = new Actions(driver);
             actions.moveToElement(driver.findElement(By.xpath("//*[@class ='example']/div["+i+"]/img[1]"))).perform();
-            WebElement userNames =  driver.findElement(By.xpath("//h5[contains(text(), 'name: user"+i+"')]"));
-            System.out.println(userNames.getText());
+
+            List<WebElement> userNames = driver.findElements(By.cssSelector(".figure"));
+            for (WebElement userName : userNames){
+            System.out.println(userName.findElement(By.tagName("h5")).getText());
+            }
         }
     }
     @AfterTest
