@@ -7,30 +7,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class Checkboxes {
+    WebDriver driver = new ChromeDriver();
     @Test
     public void CheckUncheck () {
-
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/checkboxes");
-
 
         List<WebElement> checkboxes = driver.findElements(By.xpath("//*[@id='checkboxes']/input"));
         for(int i = 0; i < checkboxes.size(); i++)
             System.out.println("Checkbox #" + (i+1) + " is " + (checkboxes.get(i).isSelected() ? "selected" : "unselected"));
-        driver.quit();
     }
 
     @Test (dependsOnMethods="CheckUncheck")
     public void allAreChecked() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/checkboxes");
 
         List<WebElement> checkboxes = driver.findElements(By.xpath("//*[@id='checkboxes']/input"));
         for (WebElement checkbox : checkboxes) {
@@ -40,7 +34,15 @@ public class Checkboxes {
                 checkbox.click();
             }
         }
-        driver.quit();
     }
+    @BeforeTest
+    public void beforeTest() {
+        WebDriverManager.chromedriver().setup();
+        driver.get("https://the-internet.herokuapp.com/checkboxes");
 
+    }
+    @AfterTest
+    public void AfterTest() {
+        driver.close();
+    }
 }

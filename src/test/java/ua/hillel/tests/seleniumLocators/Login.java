@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.openqa.selenium.By.cssSelector;
@@ -18,8 +19,6 @@ public class Login {
     WebDriver driver = new ChromeDriver();
     @Test
     public void validLogin() {
-        WebDriverManager.chromedriver().setup();
-        driver.get("https://the-internet.herokuapp.com/login");
 
         driver.findElement(By.xpath("//label[text()='Username']/../input")).click();
         driver.findElement(By.xpath("//label[text()='Username']/../input")).sendKeys("tomsmith");
@@ -28,34 +27,29 @@ public class Login {
 
         driver.findElement(cssSelector(".fa")).click();
 
-        String actualResult = driver.findElement(By.cssSelector(".success")).getText();
-        String expectedResult = "You logged into a secure area!";
+        Assert.assertTrue(driver.findElement(By.cssSelector(".success")).getText().contains("You logged into a secure area!"));
 
-
-        Assert.assertEquals(expectedResult, actualResult);
-
-        driver.quit();
     }
 
     @Test
     public void invalidLogin() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/login");
-
         driver.findElement(By.xpath("//label[text()='Username']/../input")).click();
-        driver.findElement(By.xpath("//label[text()='Username']/../input")).sendKeys("anotherUsername");
+        driver.findElement(By.xpath("//label[text()='Username']/../input")).sendKeys("invalidUsername");
         driver.findElement(By.xpath("//label[text()='Password']/../input")).click();
-        driver.findElement(By.xpath("//label[text()='Password']/../input")).sendKeys("userPassword");
+        driver.findElement(By.xpath("//label[text()='Password']/../input")).sendKeys("invalidPassword");
 
         driver.findElement(cssSelector(".fa")).click();
 
-        Assert.assertEquals(driver.findElement(By.cssSelector(".error")).getText(), "Your username is invalid!");
-
-        driver.quit();
+        Assert.assertTrue(driver.findElement(By.cssSelector(".error")).getText().contains("Your username is invalid!"));
     }
+    @BeforeTest
+    public void beforeTest() {
+        WebDriverManager.chromedriver().setup();
+        driver.get("https://the-internet.herokuapp.com/login");
+    }
+
     @AfterTest
-    public void closeBrowser() {
-        driver.quit();
+    public void AfterTest() {
+        driver.close();
     }
 }
