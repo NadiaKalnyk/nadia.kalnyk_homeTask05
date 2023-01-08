@@ -1,15 +1,10 @@
-package ua.hillel.homeTask_16.Base;
+package ua.hillel.homeTask_16_17.TheInternetSite;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ua.hillel.homeTask_16.TheInternetSite.ChallengingPage;
-import ua.hillel.homeTask_16.TheInternetSite.CheckboxesPage;
-import ua.hillel.homeTask_16.TheInternetSite.HoversPage;
-import ua.hillel.homeTask_16.TheInternetSite.LoginPage;
-import ua.hillel.homeTask_17.DownloadPage;
-import ua.hillel.homeTask_17.UploadPage;
+import ua.hillel.homeTask_16_17.Base.BasePage;
 
 public class TheInternetSite extends BasePage {
     @FindBy(linkText = "Form Authentication")

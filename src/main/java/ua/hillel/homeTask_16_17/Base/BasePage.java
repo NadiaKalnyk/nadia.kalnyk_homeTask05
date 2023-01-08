@@ -1,4 +1,4 @@
-package ua.hillel.homeTask_16.Base;
+package ua.hillel.homeTask_16_17.Base;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

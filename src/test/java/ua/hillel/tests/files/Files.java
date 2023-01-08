@@ -2,15 +2,21 @@ package ua.hillel.tests.files;
 
 import org.testng.annotations.Test;
 import ua.hillel.tests.Base.BaseTest;
-
 import java.io.IOException;
 
-public class Files extends BaseTest {
+public final class Files extends BaseTest{
     @Test
     public void downloadFile() throws IOException {
         openMainPageTheInternetSite().goToDownloadPage()
-                .selectTxtFile()
-                .changeTxtFile();
-    }
+                .downloadTxtFile();
+        fileModification();
 
+    }
+    @Test
+    public void uploadFile() throws InterruptedException {
+        waitForPreparation();
+        openMainPageTheInternetSite().goToUploadPage()
+                .uploadFile();
+
+    }
 }
