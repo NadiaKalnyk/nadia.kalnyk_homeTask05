@@ -1,12 +1,16 @@
-package ua.hillel.tests.refactoringCode;
+package ua.hillel.tests.Base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
-import ua.hillel.homeTask_16.PageObject2.CrossbrowserTestingSite;
-import ua.hillel.homeTask_16.PageObject1.TheInternetSite;
+import ua.hillel.homeTask_16.Base.CrossbrowserTestingSite;
+import ua.hillel.homeTask_16.Base.TheInternetSite;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -14,16 +18,22 @@ public class BaseTest {
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("download.default_directory", new File("/target/downloads").getAbsolutePath());
+        options.setExperimentalOption("prefs", prefs);
+
+        this.driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
-    @AfterClass(alwaysRun = true)
+/*    @AfterClass(alwaysRun = true)
     public void tearDown() {
         if (driver !=null){
             driver.quit();
         }
-    }
+    }*/
 
     public TheInternetSite openMainPageTheInternetSite(){
         driver.get("https://the-internet.herokuapp.com/");

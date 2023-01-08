@@ -1,10 +1,15 @@
-package ua.hillel.homeTask_16.PageObject1;
+package ua.hillel.homeTask_16.Base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ua.hillel.homeTask_16.Base.BasePage;
+import ua.hillel.homeTask_16.TheInternetSite.ChallengingPage;
+import ua.hillel.homeTask_16.TheInternetSite.CheckboxesPage;
+import ua.hillel.homeTask_16.TheInternetSite.HoversPage;
+import ua.hillel.homeTask_16.TheInternetSite.LoginPage;
+import ua.hillel.homeTask_17.DownloadPage;
+import ua.hillel.homeTask_17.UploadPage;
 
 public class TheInternetSite extends BasePage {
     @FindBy(linkText = "Form Authentication")
@@ -15,6 +20,10 @@ public class TheInternetSite extends BasePage {
     private WebElement CheckboxesLink;
     @FindBy(linkText = "Hovers")
     private WebElement HoversLink;
+    @FindBy(linkText = "File Download")
+    private WebElement DownloadFileLink;
+    @FindBy(linkText = "File Upload")
+    private WebElement UploadFileLink;
 
     public TheInternetSite(WebDriver driver) {
         super(driver);
@@ -37,5 +46,13 @@ public class TheInternetSite extends BasePage {
     public HoversPage goToHoversPage(){
         HoversLink.click();
         return new HoversPage(driver);
+    }
+    public DownloadPage goToDownloadPage(){
+        DownloadFileLink.click();
+        return  new DownloadPage(driver);
+    }
+    public UploadPage goToUploadPage(){
+        UploadFileLink.click();
+        return new UploadPage(driver);
     }
 }
