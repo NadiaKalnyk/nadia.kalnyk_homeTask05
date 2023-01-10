@@ -6,9 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import ua.hillel.homeTask_16_17.CrossbrowserTestingSite.CrossbrowserTestingSite;
+import ua.hillel.homeTask_16.PageObject2.CrossbrowserTestingSite;
 import ua.hillel.homeTask_16_17.TheInternetSite.TheInternetSite;
-import ua.hillel.homeTask_16_17.WorkWithFiles.FileModification;
 
 import java.io.File;
 import java.util.HashMap;
@@ -45,11 +44,7 @@ public class BaseTest {
         driver.get("https://crossbrowsertesting.github.io/");
         return new CrossbrowserTestingSite(driver);
     }
-
-    public FileModification fileModification(){
-        return new FileModification();
-    }
     public void waitForPreparation() throws InterruptedException {
-        Thread.sleep(5);
+        Thread.sleep(3000);
     }
 }

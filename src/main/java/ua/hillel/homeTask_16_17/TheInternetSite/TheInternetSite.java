@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ua.hillel.homeTask_16.PageObject1.ChallengingPage;
+import ua.hillel.homeTask_16.PageObject1.CheckboxesPage;
+import ua.hillel.homeTask_16.PageObject1.HoversPage;
+import ua.hillel.homeTask_16.PageObject1.LoginPage;
 import ua.hillel.homeTask_16_17.Base.BasePage;
 
 public class TheInternetSite extends BasePage {
