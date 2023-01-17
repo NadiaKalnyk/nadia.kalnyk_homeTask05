@@ -10,7 +10,7 @@ public class StoreRestTest {
     @Test
     public  void returnByStatus() throws IOException,NullPointerException {
         StoreController storeController = new StoreController();
-        storeController.returnByStatus("approved");
+        storeController.returnByStatus();
     }
     @Test
     public void placeNewOrderInStore() throws IOException{

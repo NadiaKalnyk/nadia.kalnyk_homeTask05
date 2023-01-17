@@ -8,10 +8,10 @@ import ua.hillel.homeTask_20.entities.Store;
 import java.io.IOException;
 
 public class StoreController {
-    public void returnByStatus(String status) throws IOException {
+    public void returnByStatus() throws IOException {
         Request request = new Request.Builder()
                 .get()
-                .url("https://petstore3.swagger.io/api/v3/store/inventory" + status)
+                .url("https://petstore3.swagger.io/api/v3/store/inventory")
                 .build();
 
         OkHttpClient client = new OkHttpClient();
