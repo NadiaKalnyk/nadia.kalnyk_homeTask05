@@ -8,7 +8,7 @@ import ua.hillel.homeTask_20.entities.Store;
 import java.io.IOException;
 
 public class StoreController {
-    public void returnByStatus() throws IOException {
+    public int returnByStatus() throws IOException {
         Request request = new Request.Builder()
                 .get()
                 .url("https://petstore3.swagger.io/api/v3/store/inventory")
@@ -20,8 +20,9 @@ public class StoreController {
         System.out.println(response.code());
         System.out.println(response.body().string());
         System.out.println(response.headers().toString());
+        return response.code();
     }
-    public void placeNewOrder(String newOrder) throws IOException {
+    public int placeNewOrder(String newOrder) throws IOException {
         JSONObject  jsonObject = new JSONObject();
 
         jsonObject.put ("id", 5);
@@ -48,9 +49,9 @@ public class StoreController {
                 responseObject.get("quantity"),
                 responseObject.get("status"));
         System.out.println(response.headers().toString());
-
+        return response.code();
     }
-    public void placeNewOrderWithGSON(Store store) throws  IOException{
+    public Store placeNewOrderWithGSON(Store store) throws  IOException{
         Gson gson = new Gson();
 
         RequestBody body = RequestBody.create(gson.toJson(store), MediaType.parse("application/json"));
@@ -60,12 +61,13 @@ public class StoreController {
                 .url("https://petstore3.swagger.io/api/v3/store/order")
                 .build();
         Response response = new OkHttpClient().newCall(request).execute();
+        Store newOrder = gson.fromJson(response.body().string(), Store.class);
 
-        System.out.println(response.code());
-        System.out.println(response.body().string());
+        System.out.println(newOrder);
         System.out.println(response.headers().toString());
+        return newOrder;
     }
-    public void findPurchaseById(int id) throws  IOException{
+    public int findPurchaseById(int id) throws  IOException{
         Request request = new Request.Builder()
                 .get()
                 .url("https://petstore3.swagger.io/api/v3/store/order/" + id)
@@ -77,9 +79,10 @@ public class StoreController {
         System.out.println(response.code());
         System.out.println(response.body().string());
         System.out.println(response.headers().toString());
+        return response.code();
     }
 
-    public  void deleteOrderByID(int orderID) throws  IOException{
+    public int deleteOrderByID(int orderID) throws  IOException{
         Gson gson = new Gson();
 
         RequestBody body = RequestBody.create(gson.toJson(orderID), MediaType.parse("application/json"));
@@ -95,5 +98,6 @@ public class StoreController {
         System.out.println(response.code());
         System.out.println(response.body().string());
         System.out.println(response.headers().toString());
+        return response.code();
     }
 }
