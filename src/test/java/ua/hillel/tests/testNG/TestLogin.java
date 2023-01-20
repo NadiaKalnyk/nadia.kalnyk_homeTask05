@@ -3,7 +3,7 @@ package ua.hillel.tests.testNG;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestLogin {
+public class TestLogin{
     @DataProvider(name = "userData")
     public Object[][] getDataFromDataProvider() {
         return new Object[][] {

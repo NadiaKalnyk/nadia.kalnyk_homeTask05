@@ -2,7 +2,7 @@
 
 <suite name="Suite1" verbose="1" >
     <test name="Test 1" >
- <!--       <classes>
+        <classes>
             <class name="ua.hillel.tests.testNG.TestLogin" />
         </classes>
     </test>
@@ -18,9 +18,7 @@
         <parameter name = "roleValue=" value = "admin"/>
         <classes>
             <class name="ua.hillel.tests.testNG.ParametersTest" />
-        </classes>-->
-        <classes>
-                <class name="ua.hillel.tests.restTest.StoreRestTest"/>
         </classes>
     </test>
+
 </suite>

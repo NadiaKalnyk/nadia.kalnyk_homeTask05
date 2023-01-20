@@ -4,14 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ua.hillel.homeTask_16.Base.BasePage;
+import org.testng.Assert;
+import ua.hillel.homeTask_16_17.Base.BasePage;
 
 public class DragAndDropPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class, 'ui-widget-content ui-draggable ui-draggable-handle')]")
     private WebElement elementSource;
     @FindBy(xpath = "//div[contains(@class, 'ui-widget-header ui-droppable')]")
     private WebElement elementTarget;
-
+    private String text = "Dropped!";
     public DragAndDropPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
@@ -20,9 +21,10 @@ public class DragAndDropPage extends BasePage {
         actions.dragAndDrop(elementSource, elementTarget).perform();
         return this;
     }
-    public String getText(){
-       return elementTarget.getText();
-/*        Assert.assertTrue(elementTarget.getText().contains(text));*/
+    public DragAndDropPage getText(){
 
+    Assert.assertTrue(elementTarget.getText().contains(text));
+    System.out.println(text);
+        return this;
     }
 }

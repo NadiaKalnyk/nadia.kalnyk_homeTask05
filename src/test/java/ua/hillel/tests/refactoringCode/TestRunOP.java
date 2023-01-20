@@ -4,8 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.hillel.homeTask_16.PageObject1.LoginPage;
 import ua.hillel.homeTask_16.PageObject1.SecureAreaPage;
+import ua.hillel.tests.Base.BaseTest;
 
-public class TestRunOP extends BaseTest{
+public class TestRunOP extends BaseTest {
     @Test
     public void Checkboxes() {
         openMainPageTheInternetSite().goToCheckboxesPage().
@@ -26,8 +27,7 @@ public class TestRunOP extends BaseTest{
     @Test
     public void dragAndDrop() {
         openMainPageCrossbrowserTestingSite().goToDragAndDropPage()
-                .dragAndDropAction()
-                .getText();
+                .dragAndDropAction();
     }
     @Test
     public void validLogin() {
