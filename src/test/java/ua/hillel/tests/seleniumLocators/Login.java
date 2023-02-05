@@ -11,11 +11,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import ua.hillel.listeners.CustomExtentReportListener;
 
 import static org.openqa.selenium.By.cssSelector;
 
+@Listeners(CustomExtentReportListener.class)
 public class Login {
+    static {
+        System.setProperty("extent.reporter.html.start", "true");
+        System.setProperty("extent.reporter.html.out", "target/extentReport/ExtentHtml.html");
+    }
     WebDriver driver = new ChromeDriver();
     @Test
     public void validLogin() {

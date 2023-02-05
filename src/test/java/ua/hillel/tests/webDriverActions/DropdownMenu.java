@@ -12,9 +12,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import ua.hillel.listeners.CustomExtentReportListener;
 
+@Listeners(CustomExtentReportListener.class)
 public class DropdownMenu {
+    static {
+        System.setProperty("extent.reporter.html.start", "true");
+        System.setProperty("extent.reporter.html.out", "target/extentReport/ExtentHtml.html");
+    }
     WebDriver driver = new ChromeDriver();
 
     @BeforeTest

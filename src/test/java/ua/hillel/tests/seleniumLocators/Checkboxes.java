@@ -9,11 +9,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import ua.hillel.listeners.CustomExtentReportListener;
 
 import java.util.List;
-
+@Listeners(CustomExtentReportListener.class)
 public class Checkboxes {
+    static {
+    System.setProperty("extent.reporter.html.start", "true");
+    System.setProperty("extent.reporter.html.out", "target/extentReport/ExtentHtml.html");
+    }
     WebDriver driver = new ChromeDriver();
     @Test
     public void CheckUncheck () {
